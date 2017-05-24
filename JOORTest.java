@@ -222,14 +222,92 @@ public class JOORTest {
 	ffd.findElement(By.xpath("//form[@id='MessageSendForm']/a")).click();
 	System.out.println("Send to all connections, populate subject, populate message, no attachment...send the message");
 	
+	//Wait for the messages to clear up
+	Thread.sleep(10000);
+	System.out.println("Waiting for things to clear up......");
+	
+	//Verify send message successful (Select connection, Subject populated, message body populated, no attachment
+	//Find and select Compose mail
+	ffd.findElement(By.xpath("//a[contains(text(),'Compose Mail')]")).click();
+	System.out.println("Verify send message successful (Select connection, Subject populated, message body populated, no attachment...clicked Compose mail");
+	
+	//This opens the message window
+	//click select connections
+	ffd.findElement(By.xpath("//input[3]")).click();
+	System.out.println("Click select connections");
+	
+	//Enter recipients into field
+	ffd.findElement(By.xpath("//div[2]/div[2]/input")).sendKeys("JOOR");
+	System.out.println("Entered JOOR");
+	
+	//Then select the recipient
+	ffd.findElement(By.xpath("//body/ul/li[3]/a")).click();
+	System.out.println("Select the recipient to send...JOOR Florida");
+	
+	//Populate the subject
+	ffd.findElement(By.xpath("//div[3]/input")).sendKeys("send message successful Select connection, Subject populated, message body populated, no attachment");
+	System.out.println("send message successful (Select connection, Subject populated, message body populated, no attachment.....Found subject field and populated it");
+	
+	//Populate message body
+	ffd.findElement(By.xpath("//textarea")).sendKeys("send message successful (Select connection, Subject populated, message body populated, no attachment........send message successful (Select connection, Subject populated, message body populated, no attachment");
+	System.out.println("send message successful send message successful (Select connection, Subject populated, message body populated, no attachment...Found message body area and populated it");
+	
+	//Click send to send the message
+	ffd.findElement(By.xpath("//form[@id='MessageSendForm']/a")).click();
+	System.out.println("Send to all connections, populate subject, populate message, no attachment...send the message");
+
+	
+	//Verify send message successful (Add multiple recipients, Subject populated, Add message body)
+	//Wait for the messages to clear up before the next one is done
+	Thread.sleep(10000);
+	System.out.println("Waiting for things to clear up......");
+	
+	//Find and select Compose mail
+	ffd.findElement(By.xpath("//a[contains(text(),'Compose Mail')]")).click();
+	System.out.println("send message successful (Add multiple recipients, Subject populated, Add message body");
+	
+	//click select connections
+	ffd.findElement(By.xpath("//input[3]")).click();
+	System.out.println("Click select connections");
+	
+	//Enter first recipients into field
+	ffd.findElement(By.xpath("//div[2]/div[2]/input")).sendKeys("JOOR");
+	System.out.println("Entered JOOR ( first recipient");
+	
+	//Then select the first recipient
+	ffd.findElement(By.xpath("//body/ul/li[3]/a")).click();
+	System.out.println("Select the recipient to send...JOOR Florida");
+	
+	//Enter second recipients into field
+	ffd.findElement(By.xpath("//div[2]/div[2]/input")).sendKeys("x");
+	System.out.println("Entered JOOR ( second recipient");
+	
+	//Wait to catch up
+	Thread.sleep(5000);
+	System.out.println("Wait for things to catch up");
+	
+	//Select the second recipient
+	ffd.findElement(By.xpath("//body/ul/li/a")).click();
+	System.out.println("Select the recipient to send...JOOR Edmonton AB");
+	
+	//Populate the subject
+	ffd.findElement(By.xpath("//div[3]/input")).sendKeys("Verify send message successful (Add multiple recipients, Subject populated, Add message body");
+	System.out.println("send message successful (Verify send message successful (Add multiple recipients, Subject populated, Add message body.....Found subject field and populated it");
+	
+	//populate the message field
+	ffd.findElement(By.xpath("//textarea")).sendKeys("Verify send message successful (Add multiple recipients, Subject populated, Add message body,..........Verify send message successful (Add multiple recipients, Subject populated, Add message body,");
+	System.out.println("Verify send message successful (Add multiple recipients, Subject populated, Add message body, ...Found message body area and populated it");
+	
+	//Click send to send the message
+	ffd.findElement(By.xpath("//form[@id='MessageSendForm']/a")).click();
+	System.out.println("Send to all connections, populate subject, populate message, no attachment...send the message");
+	
+	Thread.sleep(10000);
+	System.out.println("Waiting for things to clear up......");
+	
 	System.out.println("");
 	System.out.println("");
 	System.out.println("DONE FOR NOW");
-	//Verify send message successful (Select connection, Subject populated, message body populated, no attachment
-	
-	
-	//Verify send message successful (Add multiple recipients, Subject populated, Add message body, select attachment)
-	
 	//Verify error message appears when sending message with invalid attachment type
 	
 	//Verify error message appears when sending message with LARGE Valid attachment type
