@@ -14,4 +14,13 @@ Password: ```qatest```
 
 ## File Names
 
+	- Class1.java
+	- Class3.java
+	- Class4.java
+	- Class5.java
+	- Class6.java
+	- Class7.java
 
+
+>_Written assessment_
+GO HERE (docs, etc)
