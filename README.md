@@ -1,8 +1,6 @@
 # PL-JOOR-ASSESSMENT
 Phil Limitone JOOR Assessment
 
-Work for JOOR QA Assessment goes here...
-
 URL: ```staging.joordev.com```
 
 Username: ```qatest```
@@ -10,7 +8,7 @@ Username: ```qatest```
 Password: ```qatest```
 
 
->_Go here for the Automated Test work_
+>_Automated Test work_
 
 ## File Names
 
@@ -19,3 +17,8 @@ Password: ```qatest```
 
 ## Written assessment
 GO HERE (docs, etc)
+
+## Other items
+ - Refactor code (some redundant areas present, consolidate code into methods and call the methods when needed
+ - make up an object map for changing strings and other variables (change in one place)
+ - clean up code (indentation, proper comments, etc)
