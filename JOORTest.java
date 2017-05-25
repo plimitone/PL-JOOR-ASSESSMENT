@@ -64,8 +64,10 @@ public class JOORTest {
 		
 		//Print the length of the page source
 		System.out.println("Total length of page source is " + pageSourceLength);
+		
 		//Wait for 5 Sec
-		Thread.sleep(5);
+		System.out.println("Waiting for things to clear up......");
+		Thread.sleep(5000);
 		
 		//Maximize the webpage
 		ffd.manage().window().maximize();
@@ -223,8 +225,8 @@ public class JOORTest {
 	System.out.println("Send to all connections, populate subject, populate message, no attachment...send the message");
 	
 	//Wait for the messages to clear up
-	Thread.sleep(10000);
 	System.out.println("Waiting for things to clear up......");
+	Thread.sleep(5000);
 	
 	//Verify send message successful (Select connection, Subject populated, message body populated, no attachment
 	//Find and select Compose mail
@@ -259,8 +261,8 @@ public class JOORTest {
 	
 	//Verify send message successful (Add multiple recipients, Subject populated, Add message body)
 	//Wait for the messages to clear up before the next one is done
-	Thread.sleep(10000);
 	System.out.println("Waiting for things to clear up......");
+	Thread.sleep(5000);
 	
 	//Find and select Compose mail
 	ffd.findElement(By.xpath("//a[contains(text(),'Compose Mail')]")).click();
@@ -283,8 +285,8 @@ public class JOORTest {
 	System.out.println("Entered JOOR ( second recipient");
 	
 	//Wait to catch up
-	Thread.sleep(5000);
 	System.out.println("Wait for things to catch up");
+	Thread.sleep(5000);
 	
 	//Select the second recipient
 	ffd.findElement(By.xpath("//body/ul/li/a")).click();
@@ -302,13 +304,48 @@ public class JOORTest {
 	ffd.findElement(By.xpath("//form[@id='MessageSendForm']/a")).click();
 	System.out.println("Send to all connections, populate subject, populate message, no attachment...send the message");
 	
-	Thread.sleep(10000);
 	System.out.println("Waiting for things to clear up......");
+	Thread.sleep(5000);
+	
+
+	//Verify error message appears when sending message with invalid attachment type
+	//Find and select Compose mail
+	ffd.findElement(By.xpath("//a[contains(text(),'Compose Mail')]")).click();
+	System.out.println("Compose mail selected");
+	
+	//send to all connections
+	ffd.findElement(By.xpath("//span/div/input[2]")).click();
+	System.out.println("Attachment invalid...Found and clicked send to all connections");
+
+	//populate the subject
+	ffd.findElement(By.xpath("//div[3]/input")).sendKeys("Invalid attachment....invalid attachment");
+	System.out.println("populated subject...invalid attachment");
+	
+	//populate the message body
+	ffd.findElement(By.xpath("//textarea")).sendKeys("Invalid attachment.....INVALID ATTACHMENT!");
+	System.out.println("populated message body...invalid attachment");
+	
+	//find and click Browse to open the dialog...and select the invalid attachment (do the fancy stuff here)
+	ffd.findElement(By.xpath("/html/body/div[7]/div[1]/div[2]/div[2]/div[1]/div/div[1]/div[2]/div/form/div[5]/input")).sendKeys("/Users/flimitone/Desktop/article.json");
+	System.out.println("open browse dialog and select the invalid...invalid attachment");
+	
+	//Wait for things to catch up
+	System.out.println("Wait for things to catch up before selecting the invalid attachment from the dialog");
+	Thread.sleep(5000);
+	
+	//find and click send button
+	ffd.findElement(By.xpath("//form[@id='MessageSendForm']/a")).click();
+	System.out.println("Click send button...INVALID ATTACHMENT");
+	
+	//dismiss the alert
+	ffd.switchTo().alert().accept();
+	System.out.println("Dismissed the alert");
+	System.out.println("Now back to the mail screen");
+	
 	
 	System.out.println("");
+	System.out.println("We're done for now");
 	System.out.println("");
-	System.out.println("DONE FOR NOW");
-	//Verify error message appears when sending message with invalid attachment type
 	
 	//Verify error message appears when sending message with LARGE Valid attachment type
 	
