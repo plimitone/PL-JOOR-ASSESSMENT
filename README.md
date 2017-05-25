@@ -14,10 +14,6 @@ Password: ```qatest```
 
 	- JOORTest.java
 
-
-## Written assessment
-GO HERE (docs, etc)
-
 ## Other items
  - Refactor code (some redundant areas present, consolidate code into methods and call the methods when needed
  - Perform checks on some areas to be sure we're still on the expected page or in the expected area
