@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.WebElement;
@@ -342,14 +343,121 @@ public class JOORTest {
 	System.out.println("Dismissed the alert");
 	System.out.println("Now back to the mail screen");
 	
-	
-	System.out.println("");
-	System.out.println("We're done for now");
-	System.out.println("");
+	//wait for things to catch up
+	System.out.println("Wait for things to catch up...");
+	Thread.sleep(5000);
 	
 	//Verify error message appears when sending message with LARGE Valid attachment type
+	//Find and select Compose Mail
+	ffd.findElement(By.xpath("//a[contains(text(),'Compose Mail')]")).click();
+	System.out.println("Compose mail selected");
+	
+	//Click send to all connections
+	ffd.findElement(By.xpath("//span/div/input[2]")).click();
+	System.out.println("Attachment VALID and LARGE...Found and clicked send to all connections");
+	
+	//populate subject
+	ffd.findElement(By.xpath("//div[3]/input")).sendKeys("Large and valid attachment....");
+	System.out.println("populated subject...VALID attachment and large");
+	
+	//populate the message body
+	ffd.findElement(By.xpath("//textarea")).sendKeys("LARGE AND VALID ATTACHMENT.....LARGE AND VALID ATTACHMENT!");
+	System.out.println("populated message body...VALID AND LARGE attachment");
+	
+	//find and click Browse to open the dialog...and select the invalid attachment (do the fancy stuff here)
+	ffd.findElement(By.xpath("/html/body/div[7]/div[1]/div[2]/div[2]/div[1]/div/div[1]/div[2]/div/form/div[5]/input")).sendKeys("/Users/flimitone/Desktop/Hi Res Test Images/DigitalGlobe_WorldView2_50cm_8bit_Pansharpened_RGB_DRA_Rome_Italy_2009DEC10_8bits_sub_r_1.jpg");
+	System.out.println("open browse dialog and select the VALID AND LARGE");
+	
+	//Wait for things to catch up
+	System.out.println("Wait for things to catch up...valid and large attachment from the dialog");
+	Thread.sleep(5000);
+	
+	//click send
+	//find and click send button
+	ffd.findElement(By.xpath("//form[@id='MessageSendForm']/a")).click();
+	System.out.println("Click send button...INVALID ATTACHMENT");
+	
+	//Wait for the error to appear
+	System.out.println("Wait for things to catch up before selecting the valid and large attachment from the dialog");
+	Thread.sleep(10000);
+	
+	//dismiss the alert
+	ffd.switchTo().alert().accept();
+	System.out.println("Dismissed the alert");
+	System.out.println("Now back to the mail screen");
+
 	
 	//Verify error message appears when sending message with large and invalid type
+	//First close the open mail window
+	ffd.findElement(By.xpath("//div[2]/div/div/div/div/div/a/img")).click();
+	System.out.println("The mail window is now closed");
 	
+	//Hang out and wait
+	System.out.println("Wait for things to catch up");
+	Thread.sleep(5000);
+	
+	//Select Compose Mail
+	ffd.findElement(By.xpath("//a[contains(text(),'Compose Mail')]")).click();
+	System.out.println("Compose mail selected");
+	
+	//Click send to all connections
+	ffd.findElement(By.xpath("//span/div/input[2]")).click();
+	System.out.println("Attachment INVALID and LARGE...Found and clicked send to all connections");
+	
+	//populate subject
+	ffd.findElement(By.xpath("//div[3]/input")).sendKeys("Large and invalid attachment....");
+	System.out.println("populated subject...INVALID attachment and large");
+	
+	//populate the message body
+	ffd.findElement(By.xpath("//textarea")).sendKeys("LARGE AND INVALID ATTACHMENT.....LARGE AND INVALID ATTACHMENT!");
+	System.out.println("populated message body...INVALID AND LARGE attachment");
+	
+	//find and click Browse to open the dialog...and select the invalid and large attachment (do the fancy stuff here)
+	ffd.findElement(By.xpath("/html/body/div[7]/div[1]/div[2]/div[2]/div[1]/div/div[1]/div[2]/div/form/div[5]/input")).sendKeys("/Users/flimitone/Desktop/charles-proxy-4.0.2.dmg");
+	System.out.println("open browse dialog and select the INVALID AND LARGE");
+	
+	//Wait for things to catch up
+	System.out.println("Wait for things to catch up.. invalid and large attachment from the dialog");
+	Thread.sleep(10000);
+	
+	//find and click send button
+	ffd.findElement(By.xpath("//form[@id='MessageSendForm']/a")).click();
+	System.out.println("Click send button...INVALID LARGE ATTACHMENT");
+	
+	//Wait for the error to appear
+	System.out.println("Wait for things to catch up before selecting the valid and large attachment from the dialog");
+	Thread.sleep(15000);
+	
+	//dismiss the alert
+	ffd.switchTo().alert().accept();
+	System.out.println("Dismissed the alert");
+	System.out.println("Now back to the mail screen");
+	
+	
+	//Close the open mail window
+	ffd.findElement(By.xpath("//div[2]/div/div/div/div/div/a/img")).click();
+	System.out.println("Closed the open mail window");
+	
+	//Logout
+	//click the drop down first
+	ffd.findElement(By.xpath("//a/div")).click();
+	System.out.println("Clicked the drop down");
+	
+	//then click logout from the drop
+	ffd.findElement(By.xpath("//ul[2]/li/ul/li[6]/a")).click();
+	System.out.println("Click logout");
+	
+	//now should be back at the JOOR main screen and logged out, check something on the main screen
+	ffd.findElement(By.id("about-menu-button"));
+	System.out.println("Back at the home screen");
+	
+	
+	System.out.println("");
+	System.out.println("For now...we're done\n");
+	
+	//close the browser window
+	ffd.close();
+	
+	System.out.println("Browser window closed");
 	}
 }
